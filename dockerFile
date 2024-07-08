@@ -1,0 +1,22 @@
+#Utilise l'image officiel
+FROM node:16.13.2-alpine
+
+
+#Définir le repertoiure de travail dans le container
+WORKDIR /usr/src/app
+
+#Copie package.json et le package-lock.json
+COPY package*.json ./
+
+#Installer les dépendances
+RUN npm Install
+
+
+#Copier le reste des fichier de l'application 
+COPY . .
+
+#mettre le port 
+EXPOSE 3000
+
+#Démarrer l'application : node server.js
+CMD ["npm","test"]
